@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changetSet:
+      id: 1
+      author: User <user@mail.com>
+      changes:
+        - createTable:
+            tableName: POST
+            columns:
+              - column:
+                  name: ID
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: TITLE
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CONTENT
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CREATED_BY
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    updatable: false
+              - column:
+                  name: UDPATED_BY
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CREATED_DATE
+                  type: DATETIME
+                  constraints:
+                    nullable: false
+              - column:
+                  name: LAST_MODIFIED_DATE
+                  type: DATETIME
+                  constraints:
+                    nullable: false
