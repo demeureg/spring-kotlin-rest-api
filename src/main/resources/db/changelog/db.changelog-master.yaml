@@ -4,34 +4,47 @@ databaseChangeLog:
       author: User <user@mail.com>
       changes:
         - createTable:
+            tableName:
+            columns:
+              - column: REVINFO
+                  name: REV
+                  type: INTEGER
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: REVTSTMP
+                  type: BIGINT
+        - createTable:
             tableName: POST
             columns:
               - column:
                   name: ID
-                  type: bigint
+                  type: BIGINT
                   autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: TITLE
-                  type: varchar(255)
+                  type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
                   name: CONTENT
-                  type: text
+                  type: TEXT
                   constraints:
                     nullable: false
               - column:
                   name: CREATED_BY
-                  type: varchar(255)
+                  type: VARCHAR(255)
                   constraints:
                     nullable: false
                     updatable: false
               - column:
                   name: UDPATED_BY
-                  type: varchar(255)
+                  type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
@@ -44,3 +57,49 @@ databaseChangeLog:
                   type: DATETIME
                   constraints:
                     nullable: false
+              - column:
+                  name: VERSION
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: POST_AUDIT
+            columns:
+              - column:
+                  name: ID
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: POST_ID
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    updatable: false
+              - column:
+                  name: TITLE
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    updatable: false
+              - column:
+                  name: CONTENT
+                  type: TEXT
+                  constraints:
+                    nullable: false
+                    updatable: false
+              - column:
+                  name: UDPATED_BY
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    updatable: false
+              - column:
+                  name: UPDATE_DATE
+                  type: DATETIME
+                  constraints:
+                    nullable: false
+                    updatable: false

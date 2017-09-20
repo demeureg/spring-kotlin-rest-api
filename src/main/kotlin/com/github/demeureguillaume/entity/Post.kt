@@ -1,13 +1,16 @@
 package com.github.demeureguillaume.entity
 
+import org.hibernate.envers.AuditTable
+import org.hibernate.envers.Audited
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import javax.persistence.*
 
-@Entity(name = "POST")
-class Post : AuditableEntity() {
-    @Column(name = "ID") @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id : Long = 0
-    @Column(name = "TITLE")
-    var title : String = ""
-    @Column(name = "CONTENT")
-    var content : String = ""
+@Audited
+@AuditTable("POST_AUDIT")
+@Entity(name="POST")
+class Post : DefaultAuditableEntity() {
+    @Column(name="TITLE", nullable=false)
+    var title : String? = null
+    @Column(name="CONTENT", nullable=false)
+    var content : String? = null
 }

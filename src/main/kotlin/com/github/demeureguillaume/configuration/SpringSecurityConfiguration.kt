@@ -20,12 +20,11 @@ class SpringSecurityConfiguration : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity?) {
         http?.authorizeRequests()?.
-                mvcMatchers("/health")?.permitAll()?.
-                anyRequest()?.authenticated()?.
-                and()?.
-                httpBasic()?.
-                and()?.
-                csrf()?.disable()
+                mvcMatchers("/health", "/console/**")?.permitAll()?.
+                anyRequest()?.authenticated()
+        http?.httpBasic()
+        http?.csrf()?.disable()
+        http?.headers()?.frameOptions()?.disable()
     }
 
     override fun configure(web: WebSecurity?) {

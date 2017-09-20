@@ -1,6 +1,28 @@
 spring:
   application:
-    name: kt-app
+    name: api-app
     jpa.hibernate.ddl-auto: none
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: true
+        web-allow-others: true
+  jpa.properties.org.hibernate:
+    type: trace
+    show_sql: true
+    format_sql: true
+    use_sql_comments: false
+    envers:
+      audit_table_suffix: _AUDIT
+  jackson.serialization.write_dates_as_timestamps: false
 
 liquibase.change-log: classpath:/db/changelog/db.changelog-master.yaml
+
+logging:
+  level:
+    org.hibernate:
+      SQL: DEBUG
+      type: TRACE
+      type.descriptor.sql.BasicBinder: TRACE
